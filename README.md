@@ -1,4 +1,7 @@
 # Unsupervised Human Pose Estimation through Transforming Shape Templates (CVPR2021)
+![alt text](method_figure.png)
+<br>
+<br>
 [project page](infamtmotion.github.io)
 
 
@@ -33,3 +36,15 @@ The order of body parts should be the same in both files.
 ## Train
 If you use your own template and anchor points, make sure to change ```src/core/utils/helper/load_anchor_points``` and ```src/core/utils/losses/compute_anchor_loss``` according to your defintions.
 For training, adjust the config file in ```configs``` as well as ```train.py``` with the paths to your data and run ```python train.py --config path/to/your_config_file```
+
+# Cite
+If you find this code useful for your own project/paper, please cite our work:
+<br>
+```
+@inproceedings{LSchmidtke2021,
+  author = {Luca Schmidtke, Athanasios Vlontzos, Simon Ellershaw, Anna Lukens, Tomoki Arichi, and Bernhard Kainz},
+  title = {Unsupervised Human Pose Estimation through Transforming Shape Templates},
+  booktitle = {Proc. IEEE Conf. on Computer Vision and Pattern Recognition (CVPR)},
+  year = {2021},
+}
+```
