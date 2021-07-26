@@ -27,7 +27,7 @@ Since we cannot provide the datasets, you have to implement your own ```Dataset`
 ## Template and anchor points
 Template and anchor points are saved and loaded as json files. <br>
 <br>
-```template.json``` is a dict of length ```num_parts``` which specifies the location and size/shape of the body parts represented by 2d gaussians (x: columns, y:rows). <br>
+```template.json``` is a dict of length ```num_parts``` which specifies the location and size/shape and angle of the body parts represented by 2d gaussians (x: columns, y:rows). <br>
 <br>
 ```anchor_points.json``` is also a dict of the same length specifying anchor points for each body part (x: rows, y:columns).
 Check the two provided json files for details. <br>
@@ -36,6 +36,9 @@ The order of body parts should be the same in both files.
 ## Train
 If you use your own template and anchor points, make sure to change ```src/core/utils/helper/load_anchor_points``` and ```src/core/utils/losses/compute_anchor_loss``` according to your defintions.
 For training, adjust the config file in ```configs``` as well as ```train.py``` with the paths to your data and run ```python train.py --config path/to/your_config_file```
+
+## Inference
+We'll provide checkpoints and inference code for the model trained on human36m and our infant dataset soon, stay tuned for that.
 
 # Cite
 If you find this code useful for your own project/paper, please cite our work:
