@@ -2,6 +2,7 @@ from torch.utils.data import Dataset
 
 
 class ImageDataset(Dataset):
+    """Implement your dataset class here!"""
 
     def __init__(self):
         pass
