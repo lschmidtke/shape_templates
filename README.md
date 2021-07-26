@@ -27,7 +27,7 @@ Since we cannot provide the datasets, you have to implement your own ```Dataset`
 ## Template and anchor points
 Template and anchor points are saved and loaded as json files. <br>
 <br>
-```template.json``` is a dict of length ```num_parts``` which specifies the location and size/shape of the body parts represented by 2d gaussians (x: columns, y:rows). <br>
+```template.json``` is a dict of length ```num_parts``` which specifies the location and size/shape and angle of the body parts represented by 2d gaussians (x: columns, y:rows). <br>
 <br>
 ```anchor_points.json``` is also a dict of the same length specifying anchor points for each body part (x: rows, y:columns).
 Check the two provided json files for details. <br>
