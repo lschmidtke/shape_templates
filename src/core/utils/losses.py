@@ -14,52 +14,7 @@ def _l2_loss(x1, x2):
     return l2_loss(x1, x2)
 
 
-def compute_anchor_loss1(core, double, single, size):
-    """
-    compute mean distance between pairs of transformed anchor_points,
-    change this according to your connectivity constraints
-    """
-    loss = 0
-    # normalize to range 0, 1
-    core = core/size
-    single = single/size
-    double = double/size
-
-    # loss between core and hips and shoulders
-    indices1 = [0, 0, 1, 1]
-    # hips and shoulders
-    indices2 = [0, 1, 6, 7]
-
-    print(core[:, 0, indices1].shape)
-    print(double[:, indices2, 0].shape)
-
-    loss += (core[:, 0, indices1] - double[:, indices2, 0]).sum(1).pow(2).mean()
-
-    # head and core
-    # loss += l2_loss(core[:, 0, -1], single[:, -1, 0])
-
-    loss += (core[:, 0, -1] - single[:, -1, 0]).sum(1).pow(2).mean()
-
-    # hips to thighs to shins, shoulders to arms to forearms
-    indices3 = [0, 1, 2, 3, 6, 7, 8, 9]
-    indices4 = [2, 3, 4, 5, 8, 9, 10, 11]
-    #
-    # loss += l2_loss(double[:, indices3, 1], double[:, indices4, 0])
-
-    loss += (double[:, indices3, 1] - double[:, indices4, 0]).sum(1).pow(2).mean()
-
-    #  shin to feet, forarms to hands
-    indices5 = [4, 5, 10, 11]
-    indices6 = [0, 1, 2, 3]
-
-    # loss += l2_loss(double[:, indices5, 1], single[:, indices6, 0])
-
-    loss += (double[:, indices5, 1] - single[:, indices6, 0]).sum(1).pow(2).mean()
-
-    return loss
-
-
-def compute_anchor_loss2(core, double, single, size):
+def compute_anchor_loss(core, double, single, size):
     """
     compute mean distance between pairs of transformed anchor_points,
     change this according to your connectivity constraints
@@ -79,10 +34,6 @@ def compute_anchor_loss2(core, double, single, size):
 
         loss += l2_loss(core[:, 0, index1], double[:, index2, 0])
     # head and core
-    # loss += l2_loss(core[:, 0, -1], single[:, -1, 0])
-
-    # loss += (core[:, 0, -1] - single[:, -1, 0]).sum(1).pow(2).sqrt().mean()
-
     loss += l2_loss(core[:, 0, -1], single[:, -1, 0])
 
     # hips to thighs to shins, shoulders to arms to forearms
@@ -95,8 +46,6 @@ def compute_anchor_loss2(core, double, single, size):
     #  shin to feet, forarms to hands
     indices5 = [4, 5, 10, 11]
     indices6 = [0, 1, 2, 3]
-
-    # loss += l2_loss(double[:, indices5, 1], single[:, indices6, 0])
 
     for index5, index6 in zip(indices5, indices6):
 

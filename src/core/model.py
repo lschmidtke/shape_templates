@@ -3,7 +3,7 @@ import torch.nn as nn
 from torch.optim import Adam
 import torchvision.models as models
 from src.core.networks import ParameterRegressor, ImageTranslator
-from src.core.utils.losses import compute_anchor_loss2, compute_boundary_loss, _l1_loss
+from src.core.utils.losses import compute_anchor_loss, compute_boundary_loss, _l1_loss
 from src.core.utils.helper import draw_template, load_anchor_points
 from src.core.utils.transforms import transform_template, transform_anchor_points
 
@@ -52,7 +52,7 @@ class Model:
         transformed_anchors = transform_anchor_points(A, self.core, self.double, self.single)
 
         reconstructed = self.translator(frame2, transformed_template)
-        anchor_loss = compute_anchor_loss2(*transformed_anchors, size=img_size)
+        anchor_loss = compute_anchor_loss(*transformed_anchors, size=img_size)
         boundary_loss = compute_boundary_loss(*transformed_anchors, img_size=img_size)
         recon_loss = _l1_loss(self.vgg(frame1), self.vgg(reconstructed))
 

@@ -79,6 +79,7 @@ def draw_template(path, size, batch_size, device):
 def load_anchor_points(path, device, batch_size):
     """
     load anchor points from json file
+    change this according to your definitions
     Args:
         anchor_points: json file containing anchor points per part in column, row format similar to open-cv
         device: torch.device, either cpu or gpu
