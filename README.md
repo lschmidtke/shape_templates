@@ -37,6 +37,9 @@ The order of body parts should be the same in both files.
 If you use your own template and anchor points, make sure to change ```src/core/utils/helper/load_anchor_points``` and ```src/core/utils/losses/compute_anchor_loss``` according to your defintions.
 For training, adjust the config file in ```configs``` as well as ```train.py``` with the paths to your data and run ```python train.py --config path/to/your_config_file```
 
+## Inference
+We'll provide checkpoints and inference code for the model trained on human36m and our infant dataset soon, stay tuned for that.
+
 # Cite
 If you find this code useful for your own project/paper, please cite our work:
 <br>
