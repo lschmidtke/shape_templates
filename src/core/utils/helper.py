@@ -17,7 +17,7 @@ def draw_shape(pos, sigma_x, sigma_y, angle, size):
     draw (batched) gaussian with sigma_x, sigma_y on 2d grid
 
     Args:
-        pos: torch.tensor (float) with shape (2) specifying center of gaussian blob
+        pos: torch.tensor (float) with shape (2) specifying center of gaussian blob (x: row, y:column)
         sigma_x: torch.tensor (float scalar), scaling parameter along x-axis
         sigma_y: similar along y-axis
         angle: torch.tensor (float scalar) rotation angle in radians
@@ -80,7 +80,7 @@ def load_anchor_points(path, device, batch_size):
     """
     load anchor points from json file
     Args:
-        anchor_points: json file containing anchor points per part in col, row format similar to open-cv
+        anchor_points: json file containing anchor points per part in column, row format similar to open-cv
         device: torch.device, either cpu or gpu
     """
     with open(path, 'r') as file:
