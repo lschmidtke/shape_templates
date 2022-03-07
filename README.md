@@ -1,3 +1,8 @@
+# UPDATE
+I uploaded code and checkpoint for the pretrained model (trained on the Human 3.6m dataset).
+Formatting of the input and usage is provided comments found in src/core/pretrained_model.
+
+
 # Unsupervised Human Pose Estimation through Transforming Shape Templates (CVPR2021)
 ![alt text](method_figure.png)
 <br>
