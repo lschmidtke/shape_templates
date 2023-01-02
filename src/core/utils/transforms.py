@@ -1,8 +1,9 @@
+# partly adapted from https://github.com/microsoft/human-pose-estimation.pytorch
+
 import torch
 import numpy as np
 import cv2
 import kornia
-
 
 def transform_anchor_points(A, *argv):
     """
